@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#show'
 
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   resource :cart, only: [:show] do
     post   :add_item
     post   :remove_item
