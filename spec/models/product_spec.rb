@@ -32,4 +32,4 @@ RSpec.describe Product, type: :model do
       expect(product.errors.full_messages).not_to be_empty
     end
   end
-end
+end 
