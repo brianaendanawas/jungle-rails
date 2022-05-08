@@ -23,4 +23,24 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it "is valid with valid attributes" do
+      user = User.create(first_name: "Briana", last_name: "May", email: "briana@gmail.com", password: "123", password_confirmation: "123")
+      user_auth = User.authenticate_with_credentials("briana@gmail.com", "123")
+      expect(user_auth).to_not be nil
+    end
+
+    it "is valid with spaces around email" do
+      user = User.create(first_name: "Briana", last_name: "May", email: "briana@gmail.com", password: "123", password_confirmation: "123")
+      user_auth = User.authenticate_with_credentials(" briana@gmail.com", user.password)
+      expect(user_auth).to_not be nil
+    end
+
+    it "is valid with wrong case in email" do
+      user = User.create(first_name: "Briana", last_name: "May", email: "briana@gmail.com", password: "123", password_confirmation: "123")
+      user_auth = User.authenticate_with_credentials("BRIANA@gmail.com", user.password)
+      expect(user_auth).to_not be nil
+    end
+  end
 end
