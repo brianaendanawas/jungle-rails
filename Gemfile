@@ -45,6 +45,8 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0'
+  gem "cypress-rails"
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
